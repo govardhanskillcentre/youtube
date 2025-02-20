@@ -1,18 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Open YouTube Video Automatically</title>
-</head>
-<body onload="openYouTubeVideo()"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Day Exhibition</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<script>
-function openYouTubeVideo() {
-  // Replace with the actual YouTube video ID
-  var videoId = "YOUR_VIDEO_ID"; 
-  var url = "https://youtube.com/live/MUkI4SwcrFs?feature=share" + videoId; 
-  window.open(url, '_blank'); 
-}
-</script>
+        .container {
+            width: 90%; /* Occupy most of the screen */
+            max-width: 960px; /* Limit width on larger screens */
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            align-items: center; /* Vertically align */
+            justify-content: center; /* Center horizontally */
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .headline {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .date {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center; /* Center the date */
+        }
+
+        .live-text {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            animation: slide-in 1s ease-in-out;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .open-video-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .description {
+            text-align: center;
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) { /* Mobile View */
+            .header {
+                flex-direction: column; /* Stack logo and name */
+                align-items: center;
+                text-align: center;
+            }
+
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .headline {
+                font-size: 1.6em;
+            }
+            .date {
+                font-size: 1.1em;
+            }
+
+            .open-video-button {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+
+            .description {
+                font-size: 1.1em;
+            }
+
+            .live-text {
+                font-size: 2em;
+            }
+        }
+
+        /* Removed Laptop specific styles */
+        /* Content will now reflow naturally on larger screens */
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="https://govardhanskillcentre.github.io/student/gsc%20logo.png" alt="School Logo">
+            <h1 class="headline">Govardhan Skill Centre</h1>
+        </div>
+        <p class="date">28th Feb - Science Day Exhibition</p>
+        <p class="live-text">Live Now!</p>
+
+        <div class="video-container">
+            <iframe id="youtube-player" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="button-container">
+            <button class="open-video-button" onclick="openYouTubeVideo()">Watch Live on YouTube</button>
+        </div>
+
+        <p class="description">Our Govardhan Skill Centre is dedicated to providing quality education and fostering a love for learning in students. We strive to create a nurturing environment where students can explore their potential and develop essential skills for success.</p>
+    </div>
+
+    <script>
+        function openYouTubeVideo() {
+            const videoId = "BPLp-quwfQk"; // Replace with your YouTube video ID
+            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+        }
+
+        const initialVideoId = "BPLp-quwfQk"; // Replace with your initial video ID
+        document.getElementById("youtube-player").src = `https://www.youtube.com/embed/${initialVideoId}`;
+    </script>
 
 </body>
 </html>
